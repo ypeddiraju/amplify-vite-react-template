@@ -45,7 +45,12 @@ function App() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(format),
     })
-      .then((response) => response.json())
+      .then((response) => {if (response.status === 200) {
+        alert('Mail sent successfully');
+      }
+      else{alert('issue sending mail');}
+      return response.json();
+    })
       .then((data) => console.log(data));
     
   }
@@ -61,7 +66,7 @@ function App() {
       {({ signOut, user }) => (
 
     <main>
-      <h1>{user?.signInDetails?.loginId}'s todos</h1>
+      <h1 >{user?.signInDetails?.loginId}</h1>
       <div style={mystyle}>
         
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -87,16 +92,17 @@ function App() {
       <br />
       <label>
         Body:
+        </label>
         <textarea
         value={bodyValue} 
         onChange={(event) => setBodyValue(event.target.value)}
         rows={10} 
-        cols={50} 
+        cols={80} 
         wrap={'pre'}
         style={{ padding: '5px', border: '1px solid #ccc', resize: 'vertical',whiteSpace:'pre' }}
       />
         
-      </label>
+      
       <br />
       
       
