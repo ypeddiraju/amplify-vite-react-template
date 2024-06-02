@@ -38,6 +38,7 @@ function App() {
         subject: subjectValue,
       },
     };
+    
     let url =
       "https://cmisth8zzc.execute-api.ap-south-1.amazonaws.com/test1/everytimeusingnode";
     fetch(url, {
@@ -45,10 +46,10 @@ function App() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(format),
     })
-      .then((response) => {if (response.status === 200) {
-        alert('Mail sent successfully');
+      .then((response) => {if (response===null) {
+        alert('issue sending mail');
       }
-      else{alert('issue sending mail');}
+      else{alert('mail sent successfully');}
       return response.json();
     })
       .then((data) => console.log(data));
