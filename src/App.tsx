@@ -29,7 +29,7 @@ function App() {
 
   function handleSubmit () {
     
-
+    
     //document.getElementById("demo").innerHTML = bodyValue;
     const format = {
       queryStringParameters: {
@@ -38,7 +38,7 @@ function App() {
         subject: subjectValue,
       },
     };
-    
+
     let url =
       "https://cmisth8zzc.execute-api.ap-south-1.amazonaws.com/test1/everytimeusingnode";
     fetch(url, {
